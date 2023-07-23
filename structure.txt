@@ -1,14 +1,4 @@
 djangoInt
-|   .idea
-|   |   |-- .gitignore
-|   |   |-- aws.xml
-|   |   |-- djangoInt.iml
-|   |   inspectionProfiles
-|   |   |   |-- profiles_settings.xml
-|   |   |   |-- Project_Default.xml
-|   |   |-- misc.xml
-|   |   |-- modules.xml
-|   |   |-- workspace.xml
 |   api
 |   |   |-- views.py
 |   |   |-- __init__.py
@@ -23,6 +13,7 @@ djangoInt
 |   |   |-- models.py
 |   |   templates
 |   |   |   blog
+|   |   |   |   |-- add_comment_to_post.html
 |   |   |   |   |-- post_detail.html
 |   |   |   |   |-- post_edit.html
 |   |   |   |   |-- post_list.html

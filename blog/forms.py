@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Comment
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class TagForm(forms.ModelForm):
     class Meta:
         model = Tag
         fields = ['name']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']

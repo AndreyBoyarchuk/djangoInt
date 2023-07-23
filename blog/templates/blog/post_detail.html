@@ -6,5 +6,17 @@
     <p>{{ post.content }}</p>
     <p>Published on: {{ post.published_date }}</p>
     <p>Author: {{ post.author }}</p>
+
+    <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a>
+    <h2>Comments</h2>
+    {% for comment in post.comments.all %}
+        <div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.content }}</p>
+            <p><small>{{ comment.created_on }}</small></p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
     </div>
 {% endblock %}

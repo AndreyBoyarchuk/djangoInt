@@ -22,7 +22,7 @@ urlpatterns = [
     path('new_bus/', views.new_bus, name='new_bus'),
     path('quickbooks/', views.quickbooks, name='quickbooks'),
     path('upload/', views.upload_file_view, name='upload'),
-    path('blog/', include('blog.urls')),
+    path('blog/', include('blog.urls', namespace='blog')),  # Define the namespace here
     path('login/', auth_views.LoginView.as_view(), name='login'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
