@@ -1,0 +1,12 @@
+
+#dropzone {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #80460f;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}

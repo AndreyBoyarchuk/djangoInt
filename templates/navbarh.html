@@ -1,0 +1,47 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-logo" href="/">
+        <img src="{% static 'logo.svg' %}" alt="Logo" width="50">
+    </a>
+    <span class="navbar-brand mb-0 h1" href="/">Integrated Accounting Solutions</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <a class="nav-link custom-nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item {% if request.path == '/about_us/' %}active{% endif %}">
+                <a class="nav-link custom-nav-link" href="/about_us/">About Us</a>
+            </li>
+            <li class="nav-item {% if request.path == '/pricing/' %}active{% endif %}">
+                <a class="nav-link custom-nav-link" href="/pricing/">Pricing</a>
+            </li>
+            <!-- For Dropdown, it's a bit more complicated and might need Javascript to handle "active" state -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == '/seorganizer/' or request.path == '/taxprep/' or request.path == '/dataserv/' %}active{% endif %}"
+                   href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Services
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item {% if request.path == '/seorganizer/' %}active{% endif %}"
+                       href="/seorganizer/">SE Organizer</a>
+                    <a class="dropdown-item {% if request.path == '/taxprep/' %}active{% endif %}" href="/taxprep/">Tax
+                        Preparation</a>
+                    <a class="dropdown-item {% if request.path == '/dataserv/' %}active{% endif %}" href="/dataserv/">Data
+                        Analysis</a>
+                </div>
+            </li>
+
+        </ul>
+    <div class="button-container ml-auto"> <!-- Add ml-auto here -->
+            <a href="{% url 'upload' %}">
+    <button class="btn btn-outline-success btn-portal" type="button">Secure Upload</button>
+</a>
+    </div>
+
+    </div>
+</nav>

@@ -1,0 +1,44 @@
+{
+  "2023": {
+    "Q1": {
+      "Assets": 100000,
+      "Liabilities": 50000,
+      "Equity": 50000,
+      "CurrentAssets": 60000,
+      "CurrentLiabilities": 30000,
+      "Inventory": 20000
+    },
+    "Q2": {
+      "Assets": 110000,
+      "Liabilities": 55000,
+      "Equity": 55000,
+      "CurrentAssets": 65000,
+      "CurrentLiabilities": 35000,
+      "Inventory": 25000
+    },
+    "Q3": {
+      "Assets": 140000,
+      "Liabilities": 80000,
+      "Equity": 60000,
+      "CurrentAssets": 90000,
+      "CurrentLiabilities": 45000,
+      "Inventory": 30000
+    },
+    "Q4": {
+      "Assets": 130000,
+      "Liabilities": 65000,
+      "Equity": 65000,
+      "CurrentAssets": 75000,
+      "CurrentLiabilities": 40000,
+      "Inventory": 25000
+    },
+    "Q5": {
+      "Assets": 150000,
+      "Liabilities": 80000,
+      "Equity": 70000,
+      "CurrentAssets": 85000,
+      "CurrentLiabilities": 45000,
+      "Inventory": 30000
+    }
+  }
+}

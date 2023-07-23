@@ -1,0 +1,19 @@
+
+ {% load static %}
+<nav class="nav-wrapper vert_nav">
+  <ul class="nav flex-column">
+    <li class="nav-item {% if request.path == '/dataprog/' %}active{% endif %}">
+      <a class="nav-link v_nav" href='/dataprog/'><i class="fas fa-chart-line"></i> Data Analytis</a>
+    </li>
+    <li class="nav-item {% if request.path == '/s_corporation/' %}active{% endif %}">
+      <a class="nav-link v_nav" href='/s_corporation/'><i class="fas fa-building"></i> S Corporation Formation</a>
+    </li>
+    <li class="nav-item {% if request.path == '/new_bus/' %}active{% endif %}">
+      <a class="nav-link v_nav" href='/new_bus/'><i class="fas fa-briefcase"></i> Business Entity Creation</a>
+    </li>
+    <li class="nav-item {% if request.path == '/quickbooks/' %}active{% endif %}">
+      <a class="nav-link v_nav" href='/quickbooks/'><i class="fas fa-calculator"></i> Accounting Systems</a>
+    </li>
+
+  </ul>
+</nav>

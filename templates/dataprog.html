@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Data Science
+{% endblock %}
+
+{% block content %}
+<div class="inside">
+    <h1>Data Science</h1>
+    <h2>Our Mission</h2>
+    <h3>Our Vision</h3>
+    <h4>Our Values</h4>
+    <p>Our values are the foundation of our company.
+        They guide our actions and behavior.
+        They influence the way we work with each other –
+        and the way we serve our clients and engage
+        with our communities.</p>
+   {% load static %}
+
+<img src="{% static 'images/balance_sheet.png' %}" alt="Balance Sheet">
+<img src="{% static 'images/quick_ratio.png' %}" alt="Balance Sheet">
+
+    </div>
+{% endblock %}

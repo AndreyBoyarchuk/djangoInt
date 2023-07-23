@@ -1,0 +1,51 @@
+{% extends 'mini.html' %}
+
+
+{% load static %}
+
+{% block extrahead %}
+    <link href="{% static 'elements.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1 class="my-3">Secure File Upload</h1>
+
+        <!-- Display success messages -->
+        {% for message in messages %}
+          <div class="alert alert-success">
+            {{ message }}
+          </div>
+        {% endfor %}
+        <div id="dropzone">
+          Drop files here to upload
+        </div>
+        <form id="upload-form" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('dropzone').addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'copy';
+    });
+
+    document.getElementById('dropzone').addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      let files = e.dataTransfer.files;
+      let form = document.getElementById('upload-form');
+      let input = form.querySelector('input[type="file"]');
+
+      input.files = files;
+    });
+  </script>
+{% endblock %}

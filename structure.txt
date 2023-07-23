@@ -1,0 +1,70 @@
+djangoInt
+|   .idea
+|   |   |-- .gitignore
+|   |   |-- aws.xml
+|   |   |-- djangoInt.iml
+|   |   inspectionProfiles
+|   |   |   |-- profiles_settings.xml
+|   |   |   |-- Project_Default.xml
+|   |   |-- misc.xml
+|   |   |-- modules.xml
+|   |   |-- workspace.xml
+|   api
+|   |   |-- views.py
+|   |   |-- __init__.py
+|   |-- balance_sheet.png
+|   blog
+|   |   |-- admin.py
+|   |   |-- apps.py
+|   |   |-- forms.py
+|   |   migrations
+|   |   |   |-- 0001_initial.py
+|   |   |   |-- __init__.py
+|   |   |-- models.py
+|   |   templates
+|   |   |   blog
+|   |   |   |   |-- post_detail.html
+|   |   |   |   |-- post_edit.html
+|   |   |   |   |-- post_list.html
+|   |   |-- tests.py
+|   |   |-- urls.py
+|   |   |-- views.py
+|   |   |-- __init__.py
+|   |-- db.sqlite3
+|   djangoInt
+|   |   |-- admin.py
+|   |   |-- asgi.py
+|   |   |-- forms.py
+|   |   functions
+|   |   |   |-- blslines.py
+|   |   |   |-- quickRatios.py
+|   |   jsons
+|   |   |   |-- ratios.json
+|   |   migrations
+|   |   |-- models.py
+|   |   |-- settings.py
+|   |   |-- urls.py
+|   |   |-- views.py
+|   |   |-- wsgi.py
+|   |   |-- __init__.py
+|   |-- manage.py
+|   |-- structure.txt
+|   templates
+|   |   |-- about_us.html
+|   |   |-- base.html
+|   |   |-- dataprog.html
+|   |   |-- dataserv.html
+|   |   |-- index.html
+|   |   |-- mini.html
+|   |   |-- navbarh.html
+|   |   |-- new_bus.html
+|   |   |-- pricing.html
+|   |   |-- quickbooks.html
+|   |   registration
+|   |   |   |-- login.html
+|   |   |-- seorganizer.html
+|   |   |-- sidebar.html
+|   |   |-- s_corporation.html
+|   |   |-- taxprep.html
+|   |   |-- upload.html
+|   |-- treefiles.py
