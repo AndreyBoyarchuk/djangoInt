@@ -16,6 +16,6 @@ def write_folder_tree(directory, file, indent='', skip_directories=[]):
 
 root_directory = os.getcwd()  # Use the current working directory as the root directory
 output_file = 'structure.txt'
-skip_directories = ['venv', 'node_modules', '__pycache__','static','staticfiles','documents','idea','.git','.idea']  # List directories to skip here
+skip_directories = ['venv', 'node_modules', '__pycache__','documents','idea','.git','.idea']  # List directories to skip here
 create_folder_tree(root_directory, output_file, skip_directories)
 print(f"Folder structure saved in {output_file} successfully!")
