@@ -24,12 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o4i+=gvj#*3!k1f4vh2g^k8jkca6)u=y-waz+y%fxo4tg^g$lg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# Get the PORT from environment variables
-PORT = int(os.environ.get('PORT', 8000))
+
 
 
 # Application definition
