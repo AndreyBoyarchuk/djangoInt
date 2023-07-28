@@ -7,4 +7,12 @@
     {{ form.as_p }}
     <button type="submit">Login</button>
   </form>
+
+    <div>
+    <h2>New User</h2>
+
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+</div>
+
+
 {% endblock %}

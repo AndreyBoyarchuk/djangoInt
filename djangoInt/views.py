@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
-from .forms import UploadFileForm
+from .forms import UploadFileForm, NewUserForm
 from django.core.files.storage import default_storage
 from django.contrib import messages
 from .models import Document
 from blog.models import Post
+from django.contrib.auth import login
+
+
+
 
 from .functions.blslines import plot_balance_sheet, load_json_file
 from .functions.quickRatios import plot_quick_ratio
@@ -77,3 +81,16 @@ def upload_file_view(request):
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
+
+
+def register_request(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registration successful." )
+            return redirect("home")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    form = NewUserForm()
+    return render (request=request, template_name="registration/register.html", context={"register_form":form})

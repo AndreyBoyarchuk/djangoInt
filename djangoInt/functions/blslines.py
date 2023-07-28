@@ -1,7 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 import os
-import numpy as np  # added for mean calculation
+
 def load_json_file(file_path):
     with open(file_path) as file:
         data = json.load(file)

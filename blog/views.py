@@ -19,7 +19,7 @@ def post_detail(request, pk):
 
 
 @login_required
-@permission_required('blog.add_post')
+#@permission_required('blog.add_post')
 def new_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -28,7 +28,7 @@ def new_post(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
