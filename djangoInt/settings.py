@@ -24,10 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o4i+=gvj#*3!k1f4vh2g^k8jkca6)u=y-waz+y%fxo4tg^g$lg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['djangoenterpiseweb-production.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
+# Get the PORT from environment variables
+PORT = int(os.environ.get('PORT', 8000))
 
 
 # Application definition
@@ -86,9 +88,6 @@ DATABASES = {
     }
 }
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -126,6 +125,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR.joinpath('static')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
