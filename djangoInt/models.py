@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils import timezone
 import os
 
@@ -27,3 +28,14 @@ class Document(models.Model):
 
         super().save(*args, **kwargs)
 
+
+
+class CompanyAuthorization(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    table_name = models.CharField(max_length=255)
+
+    class Meta:
+        unique_together = ('user', 'table_name')
+
+    def __str__(self):
+        return f'{self.user.username} - {self.table_name}'

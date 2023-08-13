@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pricing
+{% endblock %}
+
+{% block content %}
+   <form method="post">
+    {% csrf_token %}
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date">
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+    <input type="submit" value="Get Data">
+</form>
+    <p>
+
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="inside">
+
+  <div>{{ summary|safe }}</div>
+  </div>
+</div>
+{% endblock %}

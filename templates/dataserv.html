@@ -6,12 +6,23 @@
 
 {% block content %}
 <div class="inside">
-    <h1>Data Analysis</h1>
-    <h2>Our Mission</h2>
-    <h3>Our Vision</h3>
-    <h4>Our Values</h4>
-    <p>Our values are the foundation of our company. They guide our actions and behavior. They influence the way we work with each other – and the way we serve our clients and engage with our communities.</p>
+    <form method="post">
+    {% csrf_token %}
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
 
+    <input type="submit" value="Get Data">
+        <br>
+        <span>Chosen Dates: {{ start_date }} to {{ end_date }} Select Dates you want to display</span>
+</form>
+
+    <h1>Data</h1>
+    <div  class="table table-bordered">{{ transactions|safe }}</div>
+
+    <h1>Trial Balance </h1>
+    <div class="table table-striped ">{{ summary|safe }}</div>
 
     </div>
 {% endblock %}
