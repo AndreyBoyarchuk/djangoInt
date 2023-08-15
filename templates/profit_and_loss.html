@@ -1,0 +1,46 @@
+{% load static %}
+<script>
+    const cssPath = "{% static 'js_reports/styles.css' %}";
+</script>
+
+{% block profit_and_loss %}
+<div class="buttons-container">
+    <button id="printButton">Print</button>
+</div>
+<div id="container_to_print">
+<div class="container">
+    <div class="header-info">
+        <p id="print_date" class="print-date"></p>
+        <p id="accounting_method" class="accounting-method"></p>
+    </div>
+    <h1 id="company_name" class="text-center mb-4"></h1>
+    <h2 class="text-center mb-4">Profit and Loss Statement</h2>
+    <h3 id="period" class="text-center mb-4"></h3>
+    <table>
+        <colgroup>
+            <col class="description-col">
+            <col class="amount-col">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="opening_line">Ordinary Income/Expense</th>
+                <th class="text-end">Amount</th>
+            </tr>
+        </thead>
+        <tbody id="statement"></tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+<script>
+    var profitAndLossData = {{ profit_and_loss|safe }};
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
+<script src="{% static 'js_reports/pl_script.js' %}" defer></script>
+
+{% endblock %}

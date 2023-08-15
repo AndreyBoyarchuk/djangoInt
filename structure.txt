@@ -1,5 +1,6 @@
 djangoInt
 |   |-- .env
+|   |-- .gitignore
 |   api
 |   |   |-- views.py
 |   |   |-- __init__.py
@@ -29,13 +30,16 @@ djangoInt
 |   |   |-- asgi.py
 |   |   datapostgres
 |   |   |   |-- postgres_connection.py
+|   |   |   |-- profit_and_loss.json
 |   |   |   |-- pull_data.py
+|   |   |   |-- test.py
 |   |   |   |-- __init__.py
 |   |   |-- forms.py
 |   |   functions
 |   |   |   |-- blslines.py
 |   |   |   |-- quickRatios.py
 |   |   |   |-- __init__.py
+|   |   |-- helpers.py
 |   |   jsons
 |   |   |   |-- ratios.json
 |   |   migrations
@@ -53,6 +57,22 @@ djangoInt
 |   |-- README.md
 |   |-- requirements.txt
 |   |-- runtime.txt
+|   static
+|   |   |-- base.js
+|   |   |-- elements.css
+|   |   images
+|   |   |   |-- balance_sheet.png
+|   |   |   |-- quick_ratio.png
+|   |   js_reports
+|   |   |   |-- balance_sheet.js
+|   |   |   |-- data_loader.js
+|   |   |   |-- functions.js
+|   |   |   |-- pl_script.js
+|   |   |   |-- preparerInfo.js
+|   |   |-- logo.svg
+|   |   |-- navbar.js
+|   |   |-- scripts.js
+|   |   |-- styles.css
 |   |-- structure.txt
 |   templates
 |   |   |-- about_us.html
@@ -65,6 +85,7 @@ djangoInt
 |   |   |-- navbarh.html
 |   |   |-- new_bus.html
 |   |   |-- pricing.html
+|   |   |-- profit_and_loss.html
 |   |   |-- quickbooks.html
 |   |   registration
 |   |   |   |-- login.html

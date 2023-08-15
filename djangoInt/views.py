@@ -8,9 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .functions.blslines import plot_balance_sheet, load_json_file
 from .functions.quickRatios import plot_quick_ratio
-from djangoInt.datapostgres.pull_data import fetch_data, fetch_summary,transactions_history
+from djangoInt.datapostgres.pull_data import fetch_data, fetch_summary,transactions_history, process_financial_reports
 from django.views.decorators.csrf import csrf_exempt
 from .helpers import fetch_table_name_for_user
+from django.http import JsonResponse
+
 def index(request):
     latest_post = Post.objects.order_by('-created_on').first()
     return render(request, 'index.html', {'latest_post': latest_post})
@@ -56,6 +58,9 @@ def test(request):
         }
 
     return render(request, 'test.html', context)
+
+import json
+
 def dataserv(request):
     default_start_date = '2023-07-01'
     default_end_date = '2023-07-05'
@@ -72,14 +77,21 @@ def dataserv(request):
     transactions = transactions_history(df)
     dfpl = fetch_summary(df)
 
+    # Call the process_profit_and_loss function
+    profit_and_loss_result = process_financial_reports(df, start_date=start_date, end_date=end_date)
+    profit_and_loss_json = json.dumps(profit_and_loss_result, indent=4)
+
     context = {
         'transactions': transactions.to_html(),
         'summary': dfpl.to_html(),
         'start_date': start_date,
         'end_date': end_date,
+        'profit_and_loss': profit_and_loss_json, # Add the profit and loss JSON to the context
     }
 
     return render(request, 'dataserv.html', context)
+
+
 
 
 
@@ -146,3 +158,20 @@ def register_request(request):
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
     return render (request=request, template_name="registration/register.html", context={"register_form":form})
+
+from django.http import JsonResponse
+
+def profit_and_loss_data(request):
+    default_start_date = '2023-07-01'
+    default_end_date = '2023-07-05'
+
+    start_date = request.GET.get('start_date', default_start_date)
+    end_date = request.GET.get('end_date', default_end_date)
+
+    t_name = fetch_table_name_for_user(request.user)
+    df = fetch_data(start_date, end_date, t_name)
+
+    # Call the process_profit_and_loss function
+    profit_and_loss_result = process_financial_reports(df, start_date=start_date, end_date=end_date)
+
+    return JsonResponse(profit_and_loss_result)

@@ -26,7 +26,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path("register", register_request, name="register"),
     path("test", views.test, name="test"),
-
+    path('profitAndLossData', views.profit_and_loss_data, name='profit_and_loss_data'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
