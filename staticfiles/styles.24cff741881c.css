@@ -1,0 +1,226 @@
+
+:root {
+  --primary-color: #0A4158;
+  --secondary-color: #4B8378;
+  --success-color: #E4D7D0;
+  --danger-color: #FF9636;
+  --warning-color: #D37506;
+  --info-color: #ADA7A7;
+  --light-color: #F2F2F2;
+  /* Add more colors as needed */
+}
+
+
+
+
+.navbar {
+  border-bottom: 4px solid var(--danger-color);
+
+}
+
+.custom-nav-link, .dropdown-toggle {
+
+  border: #0A4158;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-color: var(--danger-color);
+
+  
+}
+
+.custom-nav-link > a, .dropdown-toggle > a {
+  color: var(--primary-color) !important;
+  border: var(--primary-color);
+  border-color: var(--primary-color);
+  
+}
+
+
+.custom-nav-link:hover, .dropdown-toggle:hover {
+  background-color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.custom-nav-link.active, .dropdown-toggle.active {
+  background-color: var(--primary-color);
+  color: var(--danger-color) !important;
+  border-color: var(--danger-color);
+}
+
+/* Add this rule to change the text color of the active dropdown toggle */
+.dropdown-toggle.active, .dropdown-item.active{
+  background-color: var(--primary-color);
+  color: var(--danger-color) !important;
+  border-color: var(--danger-color);
+}
+
+
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.page-container {
+  flex: 1; /* This will push the footer to the bottom */
+}
+
+
+/* This is vertical line for navigation */
+.nav-wrapper {
+  position: sticky;/* Add this rule to make the nav stay on top */
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-right: 4px solid var(--danger-color);
+  font-family: 'Paytone One', sans-serif;/* Add this rule to change the font */
+  min-height: calc(100vh - 100px); /* 100px is the height of the footer */
+
+}
+
+
+.nav {
+  background-color: var(--light-color);
+  height: 100%;
+  width: 100%;
+ 
+}
+
+.nav-link {
+  color: var(--primary-color) !important;
+}
+
+
+
+
+.nav-item.active .nav-link {
+  background-color: var(--primary-color);
+  color: var(--danger-color) !important;
+  border-color: var(--danger-color);
+}
+
+
+
+
+@media (max-width: 580px) {
+  .nav-wrapper {
+    height: auto;
+    min-height: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-wrapper {
+    height: auto;
+    min-height: 0;
+    width: auto;
+  }
+}
+
+@media (min-width: 992px) { /* Desktop */
+    .nav-wrapper{
+        width: auto;
+    }
+}
+
+
+.footer {
+  border-top: 2px solid var(--danger-color);
+}
+
+
+.inside {
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  background-color: var(--light-color)
+}
+
+.navbar-brand {
+  color: var(--danger-color) !important;
+  font-weight: bold;
+  font-size: 25px;
+  padding-left: 20px;
+
+}
+
+
+
+.navbar-logo {
+  width: 50px;
+  height: 50px;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+/* Sticky sidebar */
+
+
+.col-md-10 {
+    box-shadow: inset 0 0 20px var(--info-color);
+}
+
+.nav.flex-column {
+    box-shadow: inset 0 0 0px var(--danger-color);
+    width: 100%;
+    font-family: Merriweather, serif;
+}
+.v_nav {
+    color: var(--primary-color) !important;
+    background-color: transparent !important;
+}
+
+.v_nav:hover {
+    color: var(--secondary-color) !important;
+    text-decoration: none;
+}
+
+.v_nav.active {
+  font-weight: bold;
+  color: var(--danger-color) !important;
+  background-color: var(--light-color) !important;
+  border-bottom: 2px solid var(--danger-color) !important;
+}
+
+
+.btn-portal {
+
+  border-color: var(--primary-color) !important;
+  color: var(--danger-color) !important;
+  box-shadow: inset 0 0 20px var(--secondary-color);
+  font-family: 'Paytone One', sans-serif;
+}
+
+#dropzone {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #999;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.login-headr{
+  
+}
+
+.user-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
