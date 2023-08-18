@@ -1,0 +1,99 @@
+{
+    "company_name": "My Company",
+    "period": "2023-07-01 to 2023-07-05",
+    "statement": {
+        "company_name": "Your Company Name",
+        "accounting_method": "Cash Basis",
+        "start_date": "2023-07-01",
+        "end_date": "2023-07-05",
+        "income": [
+            {
+                "category": "Operating Income",
+                "description": "Sales Revenue",
+                "amount": 213331.6
+            },
+            {
+                "category": "Operating Income",
+                "description": "Service Revenue",
+                "amount": 73759.92
+            }
+        ],
+        "expenses": [
+            {
+                "category": "Operating Expenses",
+                "description": "Advertising",
+                "amount": 2645.77
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Dues and Subscriptions",
+                "amount": 1818.6
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Freight Expense and Shipping",
+                "amount": 2598.8
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Fuel Expenses",
+                "amount": 2003.44
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Janitorial Expense",
+                "amount": 800.0
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Material Expenses",
+                "amount": 129231.51999999999
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Office Supplies",
+                "amount": 1746.56
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Professional Fees",
+                "amount": 7480.68
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Software",
+                "amount": 198.07
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Subcontractor Expenses",
+                "amount": 33195.3
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Training and Development",
+                "amount": 3803.7599999999998
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Travel and Entertainment",
+                "amount": 1715.09
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Uniforms and Protective Gear",
+                "amount": 274.49
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Utilities Expense",
+                "amount": 1134.79
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Wages Expense",
+                "amount": 72657.82
+            }
+        ]
+    }
+}
