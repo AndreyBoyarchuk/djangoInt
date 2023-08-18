@@ -1,21 +1,18 @@
 {% load static %}
-<script>
-    const cssPath = "{% static 'js_reports/styles.css' %}";
-</script>
 
-{% block profit_and_loss %}
-<div class="buttons-container">
-    <button id="printButton">Print</button>
-</div>
-<div id="container_to_print">
-<div class="container">
-    <div class="header-info">
-        <p id="print_date" class="print-date"></p>
-        <p id="accounting_method" class="accounting-method"></p>
-    </div>
-    <h1 id="company_name" class="text-center mb-4"></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit and Loss Statement</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
+</head>
+<body>
+    <div id="container_to_print">
+    <h1 class="text-center mb-4">{{ company_name }}</h1>
     <h2 class="text-center mb-4">Profit and Loss Statement</h2>
-    <h3 id="period" class="text-center mb-4"></h3>
+    <h3 class="text-center mb-4">{{ period }}</h3>
     <table>
         <colgroup>
             <col class="description-col">
@@ -27,7 +24,22 @@
                 <th class="text-end">Amount</th>
             </tr>
         </thead>
-        <tbody id="statement"></tbody>
+        <tbody>
+            <tr><th colspan="2">Income</th></tr>
+            {% for item in statement.income %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+            <tr><th colspan="2">Expenses</th></tr>
+            {% for item in statement.expenses %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
         <tfoot>
             <tr>
                 <th></th>
@@ -36,11 +48,24 @@
         </tfoot>
     </table>
 </div>
-</div>
-<script>
-    var profitAndLossData = {{ profit_and_loss|safe }};
-</script>
 <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
-<script src="{% static 'js_reports/pl_script.js' %}" defer></script>
+<script>
+function printContainer() {
+  const contentToPrint = document.getElementById('container_to_print').outerHTML;
+  const styles = '<link rel="stylesheet" type="text/css" href="/static/js_reports/styles.css">';
+// Include your styles here
+  const newWindow = window.open('', '_blank');
+  newWindow.document.write('<html><head>' + styles + '</head><body>' + contentToPrint + '</body></html>');
+  newWindow.document.close();
+  newWindow.focus();
+  newWindow.print();
+  newWindow.close();
+}
 
-{% endblock %}
+document.getElementById('printButton').addEventListener('click', printContainer);
+
+</script>
+<button onclick="printContainer()">Print</button>
+</body>
+</html>
+

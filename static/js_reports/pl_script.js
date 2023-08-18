@@ -1,7 +1,8 @@
+
 function printContainer() {
   const contentToPrint = document.getElementById('container_to_print').outerHTML;
-  const styles = '<link rel="stylesheet" type="text/css" href="' + cssPath + '">';
- // Include your styles here
+  const styles = '<link rel="stylesheet" type="text/css" href="/static/js_reports/styles.css">';
+// Include your styles here
   const newWindow = window.open('', '_blank');
   newWindow.document.write('<html><head>' + styles + '</head><body>' + contentToPrint + '</body></html>');
   newWindow.document.close();
@@ -11,6 +12,12 @@ function printContainer() {
 }
 
 document.getElementById('printButton').addEventListener('click', printContainer);
+
+
+
+
+
+
 
 
 function processData(data) {

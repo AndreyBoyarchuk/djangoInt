@@ -71,6 +71,8 @@ def dataserv(request):
     else:
         start_date = default_start_date
         end_date = default_end_date
+    request.session['start_date'] = start_date
+    request.session['end_date'] = end_date
 
     t_name = fetch_table_name_for_user(request.user)
     df = fetch_data(start_date, end_date, t_name)
@@ -161,17 +163,33 @@ def register_request(request):
 
 from django.http import JsonResponse
 
-def profit_and_loss_data(request):
+def profit_and_loss(request):
     default_start_date = '2023-07-01'
     default_end_date = '2023-07-05'
 
-    start_date = request.GET.get('start_date', default_start_date)
-    end_date = request.GET.get('end_date', default_end_date)
+    start_date = request.session.get('start_date')
+    end_date = request.session.get('end_date')
+
+    # Check if the dates are available
+    if start_date is None or end_date is None:
+        # Redirect to the dataserv view or show an error
+        return redirect('dataserv')  # or handle it differently
 
     t_name = fetch_table_name_for_user(request.user)
     df = fetch_data(start_date, end_date, t_name)
 
-    # Call the process_profit_and_loss function
-    profit_and_loss_result = process_financial_reports(df, start_date=start_date, end_date=end_date)
+    # Process the data as needed (modify this part to match your data structure)
+    statement = process_financial_reports(df, start_date=start_date, end_date=end_date)
 
-    return JsonResponse(profit_and_loss_result)
+    # Prepare the context for the template
+    data = {
+        'company_name': 'My Company',
+        'period': f'{start_date} to {end_date}',
+        'statement': statement,
+    }
+    with open('data.json', 'w') as file:
+        json.dump(data, file, indent=4)
+    return render(request, 'profit_and_loss.html', data)
+
+
+

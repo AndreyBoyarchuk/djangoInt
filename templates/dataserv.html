@@ -17,18 +17,44 @@
         <br>
         <span>Chosen Dates: {{ start_date }} to {{ end_date }} Select Dates you want to display</span>
 </form>
-
-
-
+    <p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tranactions_summary" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse_trial_balance" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse_pl" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
+<div class="collapse" id="tranactions_summary">
+  <div class="card card-body">
     <h1>Data</h1>
     <div  class="table table-bordered">{{ transactions|safe }}</div>
+  </div>
+</div>
 
+<div class="collapse" id="collapse_trial_balance">
+  <div class="card card-body">
     <h1>Trial Balance </h1>
     <div class="table table-striped ">{{ summary|safe }}</div>
+  </div>
+</div>
+
+<div class="collapse" id="collapse_pl">
+  <div class="card card-body">
+
+  </div>
+</div>
+
+
+
+
 
 
 
 
 </div>
-{% include 'profit_and_loss.html' %}
+
 {% endblock %}
