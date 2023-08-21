@@ -17,7 +17,7 @@ urlpatterns = [
     path('seorganizer/', views.seorganizer, name='seorganizer'),
     path('taxprep/', views.taxprep, name='taxprep'),
     path('dataserv/', views.dataserv, name='dataserv'),
-    path('dataprog/', views.dataprog, name='dataprog'),
+    #path('dataprog/', views.dataprog, name='dataprog'),
     path('s_corporation/', views.s_corporation, name='s_corporation'),
     path('new_bus/', views.new_bus, name='new_bus'),
     path('quickbooks/', views.quickbooks, name='quickbooks'),
@@ -27,6 +27,8 @@ urlpatterns = [
     path("register", register_request, name="register"),
     path("test", views.test, name="test"),
     path('profitAndLossData', views.profit_and_loss, name='profit_and_loss_data'),
+    path('balanceSheetData', views.balance_sheet, name='balance_sheet_data'),
+    path('transactions/', views.transaction_report, name='transaction_report'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
+</head>
+<body>
+<div id="container_to_print">
+    <h1 class="text-center mb-4">{{ company_name }}</h1>
+    <h2 class="text-center mb-4">Balance Sheet</h2>
+    <h3 class="text-center mb-4">{{ period }}</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in fixed_asset %}
+            {% if item.amount != 0 %}
+                <tr>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.amount|floatformat:2  }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+    <td>Income Summary</td>
+    <td>{{ income_summary|floatformat:2  }}</td>
+</tr>
+
+
+        </tbody>
+    </table>
+</div>
+<link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
+<script>
+
+
+</script>
+<button onclick="printContainer()">Print</button>
+</body>
+</html>

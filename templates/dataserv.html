@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block content %}
+
+
+
 <div class="inside">
     <form method="post">
     {% csrf_token %}
@@ -17,41 +20,91 @@
         <br>
         <span>Chosen Dates: {{ start_date }} to {{ end_date }} Select Dates you want to display</span>
 </form>
-    <p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tranactions_summary" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse_trial_balance" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse_pl" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
-  </button>
-</p>
-<div class="collapse" id="tranactions_summary">
-  <div class="card card-body">
-    <h1>Data</h1>
-    <div  class="table table-bordered">{{ transactions|safe }}</div>
-  </div>
-</div>
-
-<div class="collapse" id="collapse_trial_balance">
-  <div class="card card-body">
-    <h1>Trial Balance </h1>
-    <div class="table table-striped ">{{ summary|safe }}</div>
-  </div>
-</div>
-
-<div class="collapse" id="collapse_pl">
-  <div class="card card-body">
-
-  </div>
-</div>
 
 
+ <style>
+        .navbar {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .navbar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            color: #0A4158;
+        }
+        .navbar button.selected {
+            color: #ff7300; /* Change this to your preferred color */
+            background: #e7f8d6;
+            border-radius: 5px;
+            border: 1px solid #c2e6c2;
+        }
+        .container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+
+    <div class="navbar">
+        <button id="btn1" onclick="showContainer('container1', 'btn1')">Trial Balance</button>
+        <button id="btn2" onclick="showContainer('container2', 'btn2')">Container 2</button>
+        <button id="btn3" onclick="showContainer('container3', 'btn3')">Container 3</button>
+        <button id="btn4" onclick="showContainer('container_Statements', 'btn4')">Financial Statements</button>
+    </div>
+    <div id="container1" class="container active table table-striped">
+        <h1>Trial Balance</h1>
+        {{ summary|safe }}
+    </div>
+    <div id="container2" class="container table table-striped">
+        <h3>All Transactions</h3>
+        {{transactions|safe}}
+    </div>
+    <div id="container3" class="container">
+        <h1>Content of Container 3</h1>
+    </div>
+
+    <div id="container_Statements" class="container">
+        <h1>Content of Container 3</h1>
+
+    <button onclick="openWindow('{% url 'profit_and_loss_data' %}')">Profit and Loss</button>
+    <button onclick="openWindow('balance_sheet.html')">Balance Sheet</button>
+    <button onclick="openWindow('cash_flow.html')">Cash Flow Statement</button>
+
+    </div>
 
 
+    <script>
+         function openWindow(url) {
+        window.open(url, '_blank');
+    }
 
+        function showContainer(containerId, btnId) {
+            // Remove selected class from all buttons
+            document.querySelectorAll('.navbar button').forEach(button => {
+                button.classList.remove('selected');
+            });
+
+            // Add selected class to the clicked button
+            document.getElementById(btnId).classList.add('selected');
+
+            // Hide all containers
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Show the selected container
+            document.getElementById(containerId).classList.add('active');
+        }
+
+        // Initialize the first button as selected
+        document.getElementById('btn1').classList.add('selected');
+    </script>
 
 
 

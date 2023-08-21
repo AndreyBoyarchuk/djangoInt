@@ -1,0 +1,34 @@
+{
+    "company_name": "My Company",
+    "end_date": "2023-10-05",
+    "current_asset": [
+        {
+            "category": "Current Asset",
+            "description": "cash",
+            "amount": 65843.20000000001
+        }
+    ],
+    "fixed_asset": [
+        {
+            "category": "Fixed Asset",
+            "description": "Accumulated Depreciation",
+            "amount": -2039071.94
+        }
+    ],
+    "current_liability": [],
+    "long-term_liability": [
+        {
+            "category": "Long-Term Liability",
+            "description": "Notes Payable",
+            "amount": -184962.16
+        }
+    ],
+    "equity": [
+        {
+            "category": "Equity",
+            "description": "Common Stock",
+            "amount": 300000.0
+        }
+    ],
+    "income_summary": -2110266.58
+}

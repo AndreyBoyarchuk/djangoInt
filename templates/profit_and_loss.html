@@ -32,6 +32,14 @@
                 <td class="text-end">{{ item.amount|floatformat:2 }}</td>
             </tr>
             {% endfor %}
+            <tr><th colspan="2">COGS</th></tr>
+            {% for item in statement.cogs %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+
             <tr><th colspan="2">Expenses</th></tr>
             {% for item in statement.expenses %}
             <tr>
@@ -39,6 +47,23 @@
                 <td class="text-end">{{ item.amount|floatformat:2 }}</td>
             </tr>
             {% endfor %}
+            <tr><th colspan="2">Other Income</th></tr>
+            {% for item in statement.other_income %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+            <tr><th colspan="2">Other Expense</th></tr>
+            {% for item in statement.other_expenses %}
+            <tr>
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+
+
+
         </tbody>
         <tfoot>
             <tr>

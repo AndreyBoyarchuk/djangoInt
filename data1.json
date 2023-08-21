@@ -1,0 +1,32 @@
+{
+    "company_name": "My Company",
+    "period": "2020-07-01 to 2023-10-05",
+    "statement": {
+        "company_name": "Your Company Name",
+        "accounting_method": "Cash Basis",
+        "start_date": "2020-07-01",
+        "end_date": "2023-10-05",
+        "income": [],
+        "cogs": [],
+        "expenses": [
+            {
+                "category": "Operating Expenses",
+                "description": "Depreciation Expense",
+                "amount": 2039071.94
+            },
+            {
+                "category": "Operating Expenses",
+                "description": "Interest Expense",
+                "amount": 71194.64
+            }
+        ],
+        "other_income": [
+            {
+                "category": "Other Income",
+                "description": "Other Revenue",
+                "amount": 22000.0
+            }
+        ],
+        "other_expenses": []
+    }
+}
