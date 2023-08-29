@@ -40,7 +40,7 @@ if engine:
         result = connection.execute(statement)
         version = result.fetchone()
 
-
+print(version)
 
 
 

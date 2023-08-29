@@ -1,11 +1,11 @@
 {
     "company_name": "My Company",
-    "end_date": "2023-10-05",
+    "end_date": "2023-09-30",
     "current_asset": [
         {
             "category": "Current Asset",
             "description": "cash",
-            "amount": 65843.20000000001
+            "amount": 670417.0
         }
     ],
     "fixed_asset": [
@@ -13,14 +13,35 @@
             "category": "Fixed Asset",
             "description": "Accumulated Depreciation",
             "amount": -2039071.94
+        },
+        {
+            "category": "Fixed Asset",
+            "description": "Buildings",
+            "amount": 5112662.39
+        },
+        {
+            "category": "Fixed Asset",
+            "description": "Property Plant and Equipment",
+            "amount": 1850636.24
+        },
+        {
+            "category": "Fixed Asset",
+            "description": "Vehicles",
+            "amount": 4139842.93
         }
     ],
-    "current_liability": [],
-    "long-term_liability": [
+    "current_liability": [
+        {
+            "category": "Current Liability",
+            "description": "Accounts Payable",
+            "amount": 132858.0
+        }
+    ],
+    "long_term_liability": [
         {
             "category": "Long-Term Liability",
             "description": "Notes Payable",
-            "amount": -184962.16
+            "amount": 615037.84
         }
     ],
     "equity": [
@@ -28,7 +49,21 @@
             "category": "Equity",
             "description": "Common Stock",
             "amount": 300000.0
+        },
+        {
+            "category": "Equity",
+            "description": "Dividends Paid",
+            "amount": -1201804.97
+        },
+        {
+            "category": "Equity",
+            "description": "Retained Earnings",
+            "amount": 6821349.479999997
+        },
+        {
+            "category": "Equity",
+            "description": "Income Summary",
+            "amount": 3067046.2700000014
         }
-    ],
-    "income_summary": -2110266.58
+    ]
 }

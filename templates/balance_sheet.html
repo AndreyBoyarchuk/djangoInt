@@ -1,4 +1,6 @@
 {% load static %}
+{% load custom_filters %}
+{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,40 +11,177 @@
     <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
 </head>
 <body>
+<div>
+<div class="container"
 <div id="container_to_print">
     <h1 class="text-center mb-4">{{ company_name }}</h1>
     <h2 class="text-center mb-4">Balance Sheet</h2>
-    <h3 class="text-center mb-4">{{ period }}</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Description</th>
-            <th>Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in fixed_asset %}
-            {% if item.amount != 0 %}
+    <h3 class="text-center mb-4">As of  {{ end_date }}</h3>
+   <table>
+            <colgroup>
+                <col class="description-col">
+                <col class="amount-col">
+            </colgroup>
+            <thead>
                 <tr>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.amount|floatformat:2  }}</td>
+                    <th class="opening_line">Assets</th>
+                    <th class="text-end">Amount</th>
                 </tr>
-            {% endif %}
-        {% endfor %}
+            </thead>
+            <tbody id="statement">
+            <tr>
+                <th colspan="2" class="main-header">Currents Assets</th>
+            </tr>
+           {% for item in current_asset %}
+                <tr class="item-row">
+                    <td>{{ item.description }}</td>
+                    <td class="text-end">{{ item.amount|floatformat:2|intcomma }}</td>
+                </tr>
+
+            {% endfor %}
+            <tr class="subtotal">
+                <th class="total-header">Total Current Assets</th>
+                <td class="text-end">{{ current_asset|sum_values:'amount'|floatformat:2|intcomma }}</td>
+            </tr>
+             <tr class="separator">
+                <td colspan="2"></td>
+            </tr>
+
+            {% with total_fixed_asset=fixed_asset|sum_values:'amount' %}
+    {% if fixed_asset != 0 %}
         <tr>
-    <td>Income Summary</td>
-    <td>{{ income_summary|floatformat:2  }}</td>
-</tr>
+            <th colspan="2" class="main-header">Fixed Assets</th>
+        </tr>
+        {% for item in fixed_asset %}
+            <tr class="item-row">
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        <tr class="subtotal">
+            <th class="total-header">Total Fixed Assets</th>
+            <td class="text-end">{{ total_fixed_asset|floatformat:2|intcomma }}</td>
+        </tr>
+        <tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+    {% endif %}
+{% endwith %}
+{% with total_fixed_assets=fixed_asset|sum_values:'amount' total_current_assets=current_asset|sum_values:'amount' %}
+    {% with total_assets=total_fixed_assets|add:total_current_assets %}
+        <tr class="subtotal">
+            <th class="opening_line">Total Assets</th>
+            <td class="text-end">{{ total_assets|floatformat:2|intcomma }}</td>
+        </tr>
+    {% endwith %}
+{% endwith %}
+<tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+
+<tr class="subtotal">
+            <th class="opening_line">Liabilities and Equity</th>
+            <td class="text-end">Amount </td>
+        </tr>
+        <tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+{% with total_current_liability=current_liability|sum_values:'amount' %}
+    {% if total_current_liability != 0 %}
+        <tr>
+            <th colspan="2" class="main-header">Current Liability</th>
+        </tr>
+        {% for item in current_liability %}
+            <tr class="item-row">
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        <tr class="subtotal">
+            <th class="total-header">Total Current Liability</th>
+            <td class="text-end">{{ total_current_liability|floatformat:2|intcomma }}</td>
+        </tr>
+        <tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+    {% endif %}
+{% endwith %}
+
+ {% with total_long_term_liability=long_term_liability|sum_values:'amount' %}
+    {% if total_long_term_liability != 0 %}
+        <tr>
+            <th colspan="2" class="main-header">Long-Term Liability</th>
+        </tr>
+        {% for item in long_term_liability %}
+            <tr class="item-row">
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        <tr class="subtotal">
+            <th class="total-header">Total Long-Term Liability</th>
+            <td class="text-end">{{ total_long_term_liability|floatformat:2|intcomma }}</td>
+        </tr>
+        <tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+    {% endif %}
+{% endwith %}
+
+ {% with total_equity=equity|sum_values:'amount' %}
+    {% if equity != 0 %}
+        <tr>
+            <th colspan="2" class="main-header">Equity</th>
+        </tr>
+        {% for item in equity %}
+            <tr class="item-row">
+                <td>{{ item.description }}</td>
+                <td class="text-end">{{ item.amount|floatformat:2|intcomma }}</td>
+            </tr>
+        {% endfor %}
+        <tr class="subtotal">
+            <th class="total-header">Equity</th>
+            <td class="text-end">{{ total_equity|floatformat:2|intcomma }}</td>
+        </tr>
+        <tr class="separator">
+            <td colspan="2"></td>
+        </tr>
+    {% endif %}
+{% endwith %}
+
+{% with total_long_term_liability=long_term_liability|sum_values:'amount' %}
+{% with total_equity=equity|sum_values:'amount' %}
+{% with total_current_liability=current_liability|sum_values:'amount' %}
+{% with total_liabilities=total_long_term_liability|add:total_current_liability %}
+{% with total_le=total_liabilities|add:total_equity %}
+    <tr class="subtotal">
+        <th class="opening_line">Total Equity and Liabilities</th>
+        <td class="text-end">{{ total_le|floatformat:2|intcomma }}</td>
+    </tr>
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
+{% endwith %}
 
 
-        </tbody>
-    </table>
-</div>
+
+
+       </tbody>
+       <tfoot>
+                <tr>
+                    <th></th>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+</div> </div>
+</body>
 <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
 <script>
 
 
 </script>
 <button onclick="printContainer()">Print</button>
-</body>
+
 </html>

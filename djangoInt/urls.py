@@ -28,7 +28,7 @@ urlpatterns = [
     path("test", views.test, name="test"),
     path('profitAndLossData', views.profit_and_loss, name='profit_and_loss_data'),
     path('balanceSheetData', views.balance_sheet, name='balance_sheet_data'),
-    path('transactions/', views.transaction_report, name='transaction_report'),
+    #path('transactions/', views.transaction_report, name='transaction_report'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

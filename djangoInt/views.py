@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .functions.blslines import plot_balance_sheet, load_json_file
 from .functions.quickRatios import plot_quick_ratio
-from djangoInt.datapostgres.pull_data import fetch_data, fetch_summary, transactions_history, process_profit_and_loss, fetch_bl_data, process_balance_sheet, generate_transaction_report
+from djangoInt.datapostgres.pull_data import fetch_data, fetch_summary, transactions_history, process_profit_and_loss, fetch_bl_data, process_balance_sheet, calculate_summary_or_retained_earnings, fetch_bl_equity
 from django.views.decorators.csrf import csrf_exempt
 from .helpers import fetch_table_name_for_user
 from django.http import JsonResponse
@@ -24,7 +24,7 @@ def about_us(request):
 
 
 def pricing(request):
-    return render(request, 'pricing.html')
+    return render(request, '../../leger/templates/pricing.html')
 
 
 def seorganizer(request):
@@ -203,14 +203,29 @@ def balance_sheet(request):
     # Process the data to create the balance sheet
     company_name = 'My Company'  # Replace with your company name
     balance_sheet_result = process_balance_sheet(fetch_bl_data, end_date, table_name, company_name)
-    # Calculate total revenue
-    total_revenue = sum(item['amount'] for item in balance_sheet_result['revenue'])
-    # Calculate total expenses
-    total_expenses = sum(item['amount'] for item in balance_sheet_result['expense'])
-    # Calculate income summary
-    income_summary = total_revenue - total_expenses
-
-
+    equity_results=calculate_summary_or_retained_earnings(fetch_bl_equity(end_date,table_name), end_date)
+    retained_earnings = equity_results['retained_earnings']
+    print("view: ", retained_earnings)
+    income_summary = equity_results['income_summary']
+    print("view Income Summary: ", income_summary)
+    retained_earnings_amount = equity_results['retained_earnings']
+    # Create a dictionary for Retained Earnings
+    retained_earnings_dict = {
+        "category": "Equity",
+        "description": "Retained Earnings",
+        "amount": retained_earnings_amount
+    }
+    # Add the Retained Earnings to the equity list
+    balance_sheet_result['equity'].append(retained_earnings_dict)
+    income_summary_amount = equity_results['income_summary']
+    # Create a dictionary for Income Summary
+    income_summary_dict = {
+        "category": "Equity",
+        "description": "Income Summary",
+        "amount": income_summary_amount
+    }
+    # Add the Income Summary to the equity list
+    balance_sheet_result['equity'].append(income_summary_dict)
     # Prepare the context for the template
     context = {
         'company_name': company_name,
@@ -218,28 +233,27 @@ def balance_sheet(request):
         'current_asset': balance_sheet_result['current_asset'],
         'fixed_asset': balance_sheet_result['fixed_asset'],
         'current_liability': balance_sheet_result['current_liability'],
-        'long-term_liability': balance_sheet_result['long-term_liability'],
+        'long_term_liability': balance_sheet_result['long-term_liability'],
         'equity': balance_sheet_result['equity'],
-        'income_summary': income_summary,
     }
 
     with open('data_bl.json', 'w') as file:
         json.dump(context, file, indent=4)
 
     return render(request, 'balance_sheet.html', context)
-def transaction_report(request):
-    start_date = request.session.get('start_date')
-    end_date = request.session.get('end_date')
-
-    # Check if the dates are available
-    if start_date is None or end_date is None:
-        # Redirect to the dataserv view or show an error
-        return redirect('dataserv')  # or handle it differently
-
-    t_name = fetch_table_name_for_user(request.user)
-
-    # Generate the report URL using the generate_transaction_report function
-    report_url = generate_transaction_report(start_date, end_date, t_name, engine)  # Assuming engine is defined elsewhere
-
-    # Render the template with the report URL
-    return render(request, 'transactions.html', {'report_url': report_url})
+# def transaction_report(request):
+#     start_date = request.session.get('start_date')
+#     end_date = request.session.get('end_date')
+#
+#     # Check if the dates are available
+#     if start_date is None or end_date is None:
+#         # Redirect to the dataserv view or show an error
+#         return redirect('dataserv')  # or handle it differently
+#
+#     t_name = fetch_table_name_for_user(request.user)
+#
+#     # Generate the report URL using the generate_transaction_report function
+#     report_url = generate_transaction_report(start_date, end_date, t_name, engine)  # Assuming engine is defined elsewhere
+#
+#     # Render the template with the report URL
+#     return render(request, 'transactions.html', {'report_url': report_url})
