@@ -61,10 +61,11 @@ def fetch_summary(df):
 
 
 def process_profit_and_loss(df, company_name="Your Company Name", start_date="Start Date", end_date="End Date"):
+
     # Calculate the amount for each row
     df['amount'] = df.apply(
-        lambda row: (row['debit'] - row['credit']) if row['category_account'] in ["Expense", "COGS", "Other Expense"]
-        else (row['credit'] - row['debit']),
+        lambda row: (row['debit'] - row['credit']) if row['category_account'] in ["Expense", "COGS", "Other Expense"] #only for expense accounts
+        else (row['credit'] - row['debit']), # if category account is Other Income or Revenue
         axis=1
     )
 
@@ -109,12 +110,12 @@ def process_profit_and_loss(df, company_name="Your Company Name", start_date="St
     return result
 
 def fetch_bl_data(end_date, table_name):
-    query = f"""SELECT account, category_account, SUM(debit) AS debit, SUM(credit) AS credit FROM {table_name} WHERE date <= '{end_date}' GROUP BY account, category_account"""
+    query = f"""SELECT account, category_account, SUM(debit) AS debit, SUM(credit) AS credit FROM {table_name} WHERE date < '{end_date}' GROUP BY account, category_account"""
     df_bl = pd.read_sql_query(query, engine)
     return df_bl
 
-def fetch_bl_equity(end_date, t_name):
-    query = f"SELECT * FROM fetch_bl_data('{end_date}', '{t_name}')"
+def fetch_bl_equity(end_date, t_name): #this funciton bring transactions ungrouped which allows to filter by date
+    query = f"""SELECT * FROM fetch_bl_data('{end_date}', '{t_name}')"""
     df_equity = pd.read_sql_query(query, engine)
     return df_equity
 
@@ -148,9 +149,9 @@ def calculate_summary_or_retained_earnings(df_equity, end_date):
 
     return {'retained_earnings': retained_earnings, 'income_summary': income_summary, 'closest_year_end': closest_year_end}
 
-def process_balance_sheet(fetch_data_func, end_date, table_name, company_name):
+def process_balance_sheet(fetch_bl_data, end_date, table_name, company_name):
     # Fetch balance sheet data using the provided function
-    df_bl = fetch_data_func(end_date, table_name)
+    df_bl = fetch_bl_data(end_date, table_name)
 
     # Define categories and calculate effective balance for each
     categories = [
@@ -179,74 +180,47 @@ def process_balance_sheet(fetch_data_func, end_date, table_name, company_name):
 
     return result
 
-def process_cash_flow_data(df, start_date, end_date):
-    # Non-cash calculations
-    revenue_nc = df[(df['category_account'] == 'Revenue') & (df['source_account'] != 'cash')]['credit'].sum() - \
-                 df[(df['category_account'] == 'Revenue') & (df['source_account'] != 'cash')]['debit'].sum()
-    expenses_nc = df[(df['category_account'] == 'Expense') & (df['source_account'] != 'cash')]['debit'].sum() - \
-                  df[(df['category_account'] == 'Expense') & (df['source_account'] != 'cash')]['credit'].sum()
-    other_income_nc = df[(df['category_account'] == 'Other Income') & (df['source_account'] != 'cash')]['credit'].sum() - \
-                      df[(df['category_account'] == 'Other Income') & (df['source_account'] != 'cash')]['debit'].sum()
-    other_expense_nc = df[(df['category_account'] == 'Other Expense') & (df['source_account'] != 'cash')]['debit'].sum() - \
-                       df[(df['category_account'] == 'Other Expense') & (df['source_account'] != 'cash')]['credit'].sum()
-    cogs_nc = df[(df['category_account'] == 'COGS') & (df['source_account'] != 'cash')]['debit'].sum() - \
-              df[(df['category_account'] == 'COGS') & (df['source_account'] != 'cash')]['credit'].sum()
+def process_cash_flow_data(df, df1, df2, t_name, start_date, end_date):
+    # _________________________________________________
+    nocash_df = df[df['source_account'] != 'cash']
+    # nonecash transactions filter
+    grouped = nocash_df.groupby(['category_account', 'account','source_account']).agg({
+        'debit': 'sum',
+        'credit': 'sum'
+    }).reset_index()
+    # _________________________________________________
+    cash_df = df[df['source_account'] == 'cash']
+    # cash transactions filtered
+    grouped2 = cash_df.groupby(['category_account', 'account','source_account']).agg({
+        'debit': 'sum',
+        'credit': 'sum'
+    }).reset_index()
+    # Cash Balances
+    # Cash starting balance
+    df_before_start = df1[df1['account'] == 'cash']
+    cash_credits_start = df_before_start[df_before_start['account'] == 'cash']['credit'].sum()
+    cash_debits_start = df_before_start[df_before_start['account'] == 'cash']['debit'].sum()
+    # Cash ending balance
+    df_before_end = df2[df2['account'] == 'cash']
+    cash_credits_end = df_before_end[df_before_end['account'] == 'cash']['credit'].sum()
+    cash_debits_end = df_before_end[df_before_end['account'] == 'cash']['debit'].sum()
 
-    # Cash-based calculations
-    filtered_df = df[df['source_account'] == 'cash']
-    fixed_asset = filtered_df[filtered_df['category_account'] == 'Fixed Asset']['debit'].sum() - \
-                  filtered_df[filtered_df['category_account'] == 'Fixed Asset']['credit'].sum()
-    equity = filtered_df[filtered_df['category_account'] == 'Equity']['credit'].sum() - \
-             filtered_df[filtered_df['category_account'] == 'Equity']['debit'].sum()
-    current_liability = filtered_df[filtered_df['category_account'] == 'Current Liability']['debit'].sum() - \
-                        filtered_df[filtered_df['category_account'] == 'Current Liability']['credit'].sum()
-    long_term_liability = filtered_df[filtered_df['category_account'] == 'Long-Term Liability']['debit'].sum() - \
-                          filtered_df[filtered_df['category_account'] == 'Long-Term Liability']['credit'].sum()
-    current_asset = filtered_df[filtered_df['category_account'] == 'Current Asset']['debit'].sum() - \
-                    filtered_df[filtered_df['category_account'] == 'Current Asset']['credit'].sum()
+    cash_balances_df = pd.DataFrame({
+        'category_account': ['Cash Balance', 'Cash Balance'],
+        'account': ['Cash Start', 'Cash End'],
+        'debit': [cash_debits_start, cash_debits_end],
+        'credit': [cash_credits_start, cash_credits_end],
+        'indicator': ['balance', 'balance'],
+        'source_account': ['cash', 'cash']
+    })
+    grouped['indicator'] = 'none_cash'
+    grouped2['indicator'] = 'cash'
 
-    # Net Income calculation
-    revenue = df[df['category_account'] == 'Revenue']['credit'].sum() - df[df['category_account'] == 'Revenue']['debit'].sum()
-    expenses = df[df['category_account'] == 'Expense']['debit'].sum() - df[df['category_account'] == 'Expense']['credit'].sum()
-    other_income = df[df['category_account'] == 'Other Income']['credit'].sum() - df[df['category_account'] == 'Other Income']['debit'].sum()
-    other_expenses = df[df['category_account'] == 'Other Expense']['debit'].sum() - df[df['category_account'] == 'Other Expense']['credit'].sum()
-    cogs = df[df['category_account'] == 'COGS']['debit'].sum() - df[df['category_account'] == 'COGS']['credit'].sum()
-    net_income = revenue + other_income - expenses - other_expenses - cogs
+    # grouped['account'] = grouped['account'].apply(lambda x: f"{x}_none_cash")
+    # grouped2['account'] = grouped2['account'].apply(lambda x: f"{x}_cash")
+    combined_df = pd.concat([grouped, grouped2, cash_balances_df])
+    combined_df = combined_df.reset_index(drop=True)
+    return combined_df
 
-    # Cash at start and end date calculations
-    df_before_start = df[df['date'] == start_date]
-    cash_credits_start = df_before_start[df_before_start['account'] == 'Cash']['credit'].sum()
-    cash_debits_start = df_before_start[df_before_start['account'] == 'Cash']['debit'].sum()
-    total_cash_start = cash_credits_start - cash_debits_start
 
-    df_before_end = df[df['date'] == end_date]
-    cash_credits_end = df_before_end[df_before_end['account'] == 'Cash']['credit'].sum()
-    cash_debits_end = df_before_end[df_before_end['account'] == 'Cash']['debit'].sum()
-    total_cash_end = cash_credits_end - cash_debits_end
 
-    # Formatting the data
-    formatted_data = [
-        {"category": "Revenue", "description": "Revenue (non-cash)", "amount": revenue_nc},
-        {"category": "Expense", "description": "Expenses (non-cash)", "amount": expenses_nc},
-        {"category": "Other Income", "description": "Other Income (non-cash)", "amount": other_income_nc},
-        {"category": "Other Expense", "description": "Other Expenses (non-cash)", "amount": other_expense_nc},
-        {"category": "COGS", "description": "COGS (non-cash)", "amount": cogs_nc},
-        {"category": "Fixed Asset", "description": "Fixed Asset", "amount": fixed_asset},
-        {"category": "Equity", "description": "Equity", "amount": equity},
-        {"category": "Current Liability", "description": "Current Liability", "amount": current_liability},
-        {"category": "Long-Term Liability", "description": "Long-Term Liability", "amount": long_term_liability},
-        {"category": "Current Asset", "description": "Current Asset", "amount": current_asset},
-        {"category": "Revenue", "description": "Net Income", "amount": net_income},
-        {"category": "Cash", "description": "Total Cash at Start Date", "amount": total_cash_start},
-        {"category": "Cash", "description": "Total Cash at End Date", "amount": total_cash_end}
-    ]
-
-    return formatted_data
-
-# Sample usage
-# print(process_cash_flow_data(fetch_data("2019-01-01", "2023-12-31", "sample_company"), "2019-01-01", "2023-12-31"))
-start_date = "2021-01-01"
-end_date = "2022-12-31"
-t_name = "sample_company"
-df = fetch_data(start_date, end_date, t_name)
-print(process_cash_flow_data(df, start_date, end_date))

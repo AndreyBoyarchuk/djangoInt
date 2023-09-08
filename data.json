@@ -1,165 +1,113 @@
 {
     "company_name": "My Company",
-    "period": "2023-05-01 to 2023-09-30",
+    "period": "2023-07-01 to 2023-07-05",
     "statement": {
         "company_name": "Your Company Name",
         "accounting_method": "Cash Basis",
-        "start_date": "2023-05-01",
-        "end_date": "2023-09-30",
+        "start_date": "2023-07-01",
+        "end_date": "2023-07-05",
         "income": [
             {
                 "category": "Operating Income",
                 "description": "Sales Revenue",
-                "amount": 3021317.82
+                "amount": 213331.6
             },
             {
                 "category": "Operating Income",
                 "description": "Service Revenue",
-                "amount": 3416909.2
+                "amount": 73759.92
             }
         ],
         "cogs": [
             {
                 "category": "Cost of Goods Sold",
                 "description": "Purchases of Items",
-                "amount": 36900.0
+                "amount": 12658.0
             },
             {
                 "category": "Cost of Goods Sold",
                 "description": "Raw Materials COGS",
-                "amount": 3708.0
+                "amount": 1272.0
             }
         ],
         "expenses": [
             {
                 "category": "Operating Expenses",
                 "description": "Advertising",
-                "amount": 90086.45
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Business Comunication",
-                "amount": 12207.53
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Depreciation Expense",
-                "amount": 339233.01
+                "amount": 2645.77
             },
             {
                 "category": "Operating Expenses",
                 "description": "Dues and Subscriptions",
-                "amount": 62391.61
+                "amount": 1818.6
             },
             {
                 "category": "Operating Expenses",
                 "description": "Freight Expense and Shipping",
-                "amount": 24469.22
+                "amount": 2598.8
             },
             {
                 "category": "Operating Expenses",
                 "description": "Fuel Expenses",
-                "amount": 22003.35
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Insurance Expenses",
-                "amount": 105356.02
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Interest Expense",
-                "amount": 5879.4400000000005
+                "amount": 2003.44
             },
             {
                 "category": "Operating Expenses",
                 "description": "Janitorial Expense",
-                "amount": 13600.0
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Maintenance Expenses",
-                "amount": 368288.83999999997
+                "amount": 800.0
             },
             {
                 "category": "Operating Expenses",
                 "description": "Material Expenses",
-                "amount": 1016021.58
+                "amount": 129231.51999999999
             },
             {
                 "category": "Operating Expenses",
                 "description": "Office Supplies",
-                "amount": 5051.59
+                "amount": 1746.56
             },
             {
                 "category": "Operating Expenses",
                 "description": "Professional Fees",
-                "amount": 51531.36
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Rent Expense",
-                "amount": 7860.93
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Security Service",
-                "amount": 2485.5099999999998
+                "amount": 7480.68
             },
             {
                 "category": "Operating Expenses",
                 "description": "Software",
-                "amount": 590.56
+                "amount": 198.07
             },
             {
                 "category": "Operating Expenses",
                 "description": "Subcontractor Expenses",
-                "amount": 1994106.26
+                "amount": 33195.3
             },
             {
                 "category": "Operating Expenses",
                 "description": "Training and Development",
-                "amount": 132322.06
+                "amount": 3803.7599999999998
             },
             {
                 "category": "Operating Expenses",
                 "description": "Travel and Entertainment",
-                "amount": 25737.43
+                "amount": 1715.09
             },
             {
                 "category": "Operating Expenses",
                 "description": "Uniforms and Protective Gear",
-                "amount": 13121.25
+                "amount": 274.49
             },
             {
                 "category": "Operating Expenses",
                 "description": "Utilities Expense",
-                "amount": 11731.35
+                "amount": 1134.79
             },
             {
                 "category": "Operating Expenses",
                 "description": "Wages Expense",
-                "amount": 876065.12
-            },
-            {
-                "category": "Operating Expenses",
-                "description": "Waste Removal",
-                "amount": 2354.74
+                "amount": 72657.82
             }
         ],
-        "other_income": [
-            {
-                "category": "Other Income",
-                "description": "Other Revenue",
-                "amount": 4000.0
-            }
-        ],
-        "other_expense": [
-            {
-                "category": "Other Expense",
-                "description": "Accretion Expense\n",
-                "amount": 168.0
-            }
-        ]
+        "other_income": [],
+        "other_expense": []
     }
 }

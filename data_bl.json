@@ -1,18 +1,18 @@
 {
     "company_name": "My Company",
-    "end_date": "2023-09-30",
+    "end_date": "2023-07-05",
     "current_asset": [
         {
             "category": "Current Asset",
             "description": "cash",
-            "amount": 670417.0
+            "amount": 605910.5899999887
         }
     ],
     "fixed_asset": [
         {
             "category": "Fixed Asset",
             "description": "Accumulated Depreciation",
-            "amount": -2039071.94
+            "amount": -1924993.31
         },
         {
             "category": "Fixed Asset",
@@ -22,26 +22,26 @@
         {
             "category": "Fixed Asset",
             "description": "Property Plant and Equipment",
-            "amount": 1850636.24
+            "amount": 1850692.24
         },
         {
             "category": "Fixed Asset",
             "description": "Vehicles",
-            "amount": 4139842.93
+            "amount": 4073957.91
         }
     ],
     "current_liability": [
         {
             "category": "Current Liability",
             "description": "Accounts Payable",
-            "amount": 132858.0
+            "amount": 125568.0
         }
     ],
     "long_term_liability": [
         {
             "category": "Long-Term Liability",
             "description": "Notes Payable",
-            "amount": 615037.84
+            "amount": 621101.8
         }
     ],
     "equity": [
@@ -53,7 +53,7 @@
         {
             "category": "Equity",
             "description": "Dividends Paid",
-            "amount": -1201804.97
+            "amount": -1178453.34
         },
         {
             "category": "Equity",
@@ -63,7 +63,7 @@
         {
             "category": "Equity",
             "description": "Income Summary",
-            "amount": 3067046.2700000014
+            "amount": 2990801.589999998
         }
     ]
 }

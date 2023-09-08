@@ -1,0 +1,80 @@
+[
+    {
+        "category": "Revenue",
+        "account": "account",
+        "description": "revenue_none_cash",
+        "amount": 55320287.53
+    },
+    {
+        "category": "Expense",
+        "account": "account",
+        "description": "expenses_none_cash",
+        "amount": 48380311.85
+    },
+    {
+        "category": "Other Income",
+        "account": "account",
+        "description": "other_income_none_cash",
+        "amount": 16000.0
+    },
+    {
+        "category": "Other Expense",
+        "account": "account",
+        "description": "other-expenses_none_cash",
+        "amount": 1568.0
+    },
+    {
+        "category": "COGS",
+        "account": "account",
+        "description": "cogs_none_cash",
+        "amount": 159384.0
+    },
+    {
+        "category": "Fixed Asset",
+        "account": "account",
+        "description": "fixed_asset",
+        "amount": 0.0
+    },
+    {
+        "category": "Equity",
+        "account": "account",
+        "description": "Equity",
+        "amount": 0.0
+    },
+    {
+        "category": "Current Liability",
+        "account": "account",
+        "description": "Current Liability",
+        "amount": 0.0
+    },
+    {
+        "category": "Long-Term Liability",
+        "account": "account",
+        "description": "Long-Term Liability",
+        "amount": 0.0
+    },
+    {
+        "category": "Current Asset",
+        "account": "account",
+        "description": "Current Asset",
+        "amount": -2367798.519999996
+    },
+    {
+        "category": "Revenue",
+        "account": "account",
+        "description": "Net Income",
+        "amount": 6795023.68
+    },
+    {
+        "category": "Cash",
+        "account": "account",
+        "description": "Total Cash at Start Date",
+        "amount": 341695.99
+    },
+    {
+        "category": "Cash",
+        "account": "account",
+        "description": "Total Cash at End Date",
+        "amount": -2067333.3599999994
+    }
+]

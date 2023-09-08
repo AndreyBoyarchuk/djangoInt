@@ -1,0 +1,59 @@
+category_account,account, debit ,credit,indicator,,,,,,,,,,,,,,,,,,,,
+COGS,Purchases of Items," 225,928.00 ",0,none_cash,,,,,,,,,,,,,,,,,,,,
+COGS,Raw Materials COGS," 22,692.00 ",0,none_cash,,,,,,,,,,,,,,,,,,,,
+Current Asset,cash," 369,951.84 ",,none_cash,account,category_account,total_debit,total_credit,,,,,,,Assets,Amount,Assets,Amount,,Ordinary Income/Expense,Amount,Ordinary Income/Expense,Amount,
+Current Liability,Accounts Payable, -   ,248620,none_cash,0,Accounts Payable,Current Liability,0,131130,117490,248620,131130,0,,Currents Assets,,Currents Assets,,,Income,,Income,,
+Expense,Depreciation Expense," 2,025,136.42 ",0,none_cash,1,Accretion Expense,Other Expense,2016,0,2016,,2016,0,,cash,"670,417.00",cash,"341,695.99","328,721.01",Sales Revenue,"34,834,647.97",Sales Revenue,"34,834,647.97",0.00
+Fixed Asset,Accumulated Depreciation, -   ,2025136.42,none_cash,2,Accumulated Depreciation,Fixed Asset,0,2025136.42,0,2025136.42,2025136.42,0,,Total Current Assets,"670,417.00",Total Current Assets,"341,695.99",,Service Revenue,"36,745,393.46",Service Revenue,"36,847,588.73","-102,195.27"
+Fixed Asset,Property Plant and Equipment, -   ,2016,none_cash,3,Advertising,Expense,1521243.07,0,1521243.07,,1521243.07,0,,,,,,,Total Income,"71,580,041.43",Total Income,"71,682,236.70","-102,195.27"
+Other Expense,Accretion Expense," 2,016.00 ",0,none_cash,4,Buildings,Fixed Asset,5112662.39,0,5112662.39,,5112662.39,0,,Fixed Assets,,Fixed Assets,,,,,,,0.00
+Current Liability,Accounts Payable," 117,490.00 ",0,cash,5,Business Comunication,Expense,106474.44,0,106474.44,,106474.44,0,,Accumulated Depreciation,"-2,039,071.94",Accumulated Depreciation,"-13,935.52","-2,025,136.42",COGS,,COGS,,0.00
+Equity,Dividends Paid," 1,201,804.97 ",0,cash,6,Depreciation Expense,Expense,2025136.42,0,2025136.42,,2025136.42,0,,Buildings,"5,112,662.39",,,"5,112,662.39",Purchases of Items,"225,928.00",Purchases of Items,"228,690.00","-2,762.00"
+Expense,Advertising," 1,521,243.07 ",0,cash,7,Dividends Paid,Equity,1201804.97,0,1201804.97,,1201804.97,0,,Property Plant and Equipment,"1,850,636.24",Property Plant and Equipment,"799,888.00","1,050,748.24",Raw Materials COGS,"22,692.00",Raw Materials COGS,"22,968.00",-276.00
+Expense,Business Comunication," 106,474.44 ",0,cash,8,Dues and Subscriptions,Expense,537165.76,0,537165.76,,537165.76,0,,Vehicles,"4,139,842.93",Vehicles,"36,131.26","4,103,711.67",Total COGS,"248,620.00",Total COGS,"251,658.00","-3,038.00"
+Expense,Dues and Subscriptions," 537,165.76 ",0,cash,9,Freight Expense and Shipping,Expense,265029.82,0,265029.82,,265029.82,0,,Total Fixed Assets,"9,064,069.62",Total Fixed Assets,"822,083.74","8,241,985.88",,,,,0.00
+Expense,Freight Expense and Shipping," 265,029.82 ",0,cash,10,Fuel Expenses,Expense,282605.09,0,282605.09,,282605.09,0,,,,,,0.00,Gross Profit,"71,331,421.43",Gross Profit,"71,430,578.70","-99,157.27"
+Expense,Fuel Expenses," 282,605.09 ",0,cash,11,Insurance Expenses,Expense,758870.99,0,758870.99,,758870.99,0,,Total Assets,"9,734,486.62",Total Assets,"1,163,779.73","8,570,706.89",,,,,0.00
+Expense,Insurance Expenses," 758,870.99 ",0,cash,12,Interest Expense,Expense,72494.64,0,72494.64,,72494.64,0,,,,,,,Expenses,,Expenses,,0.00
+Expense,Interest Expense," 72,494.64 ",0,cash,13,Janitorial Expense,Expense,108000,0,108000,,108000,0,,Liabilities and Equity,Amount,Liabilities and Equity,Amount,,Advertising,"1,521,243.07",Advertising,"1,521,243.07",0.00
+Expense,Janitorial Expense," 108,000.00 ",0,cash,14,Maintenance Expenses,Expense,3447095.27,0,3447095.27,,3447095.27,0,,,,,,,Business Comunication,"106,474.44",Business Comunication,"106,474.44",0.00
+Expense,Maintenance Expenses," 3,447,095.27 ",0,cash,15,Material Expenses,Expense,11098081.82,0,11098081.82,,11098081.82,0,,Current Liability,,Current Liability,,,Depreciation Expense,"2,025,136.42",Depreciation Expense,"2,039,071.94","-13,935.52"
+Expense,Material Expenses," 11,098,081.82 ",0,cash,16,Notes Payable,Long-Term Liability,179457.26,0,179457.26,,179457.26,0,,Accounts Payable,"132,858.00",Accounts Payable,"1,728.00",,Dues and Subscriptions,"537,165.76",Dues and Subscriptions,"537,165.76",0.00
+Expense,Office Supplies," 94,546.41 ",0,cash,17,Office Supplies,Expense,94546.41,0,94546.41,,94546.41,0,,Total Current Liability,"132,858.00",Total Current Liability,"1,728.00",,Freight Expense and Shipping,"265,029.82",Freight Expense and Shipping,"265,029.82",0.00
+Expense,Professional Fees," 465,667.35 ",0,cash,18,Other Revenue,Other Income,0,22000,0,22000,22000,0,,,,,,,Fuel Expenses,"282,605.09",Fuel Expenses,"282,655.77",-50.68
+Expense,Rent Expense," 52,486.24 ",0,cash,19,Professional Fees,Expense,465667.35,0,465667.35,,465667.35,0,,Long-Term Liability,,Long-Term Liability,,,Insurance Expenses,"758,870.99",Insurance Expenses,"758,870.99",0.00
+Expense,Security Service," 38,978.85 ",0,cash,20,Property Plant and Equipment,Fixed Asset,1050748.24,0,1052764.24,2016,1050748.24,0,,Notes Payable,"615,037.84",Notes Payable,"794,495.10",,Interest Expense,"72,494.64",Interest Expense,"74,994.64","-2,500.00"
+Expense,Software," 5,281.37 ",0,cash,21,Purchases of Items,COGS,225928,0,225928,,225928,0,,Total Long-Term Liability,"615,037.84",Total Long-Term Liability,"794,495.10",,Janitorial Expense,"108,000.00",Janitorial Expense,"108,000.00",0.00
+Expense,Subcontractor Expenses," 28,182,787.67 ",0,cash,22,Raw Materials COGS,COGS,22692,0,22692,,22692,0,,,,,,,Maintenance Expenses,"3,447,095.27",Maintenance Expenses,"3,447,095.27",0.00
+Expense,Training and Development," 1,375,976.79 ",0,cash,23,Rent Expense,Expense,52486.24,0,52486.24,,52486.24,0,,Equity,,Equity,,,Material Expenses,"11,098,081.82",Material Expenses,"11,127,153.24","-29,071.42"
+Expense,Travel and Entertainment," 297,574.19 ",0,cash,24,Sales Revenue,Revenue,0,34834647.97,0,34834647.97,34834647.97,0,,Common Stock,"300,000.00",Common Stock,"300,000.00",,Office Supplies,"94,546.41",Office Supplies,"94,546.41",0.00
+Expense,Uniforms and Protective Gear," 135,579.19 ",0,cash,25,Security Service,Expense,38978.85,0,38978.85,,38978.85,0,,Dividends Paid,"-1,201,804.97",,,,Professional Fees,"465,667.35",Professional Fees,"465,667.35",0.00
+Expense,Utilities Expense," 126,419.88 ",0,cash,26,Service Revenue,Revenue,0,36745393.46,0,36745393.46,36745393.46,0,,Retained Earnings,"9,888,395.75",Retained Earnings,"26,325.80",,Rent Expense,"52,486.24",Rent Expense,"52,486.24",0.00
+Expense,Wages Expense," 10,476,583.02 ",0,cash,27,Software,Expense,5281.37,0,5281.37,0,5281.37,0,,Income Summary,0,Income Summary,"41,230.83",,Security Service,"38,978.85",Security Service,"38,978.85",0.00
+Expense,Waste Removal," 15,257.20 ",0,cash,28,Subcontractor Expenses,Expense,28182787.67,0,28182787.67,0,28182787.67,0,,Equity,"8,986,590.78",Equity,"367,556.63",,Software,"5,281.37",Software,"5,281.37",0.00
+Fixed Asset,Buildings," 5,112,662.39 ",0,cash,29,Training and Development,Expense,1375976.79,0,1375976.79,0,1375976.79,0,,,,,,,Subcontractor Expenses,"28,182,787.67",Subcontractor Expenses,"28,195,272.23","-12,484.56"
+Fixed Asset,Property Plant and Equipment," 1,052,764.24 ",0,cash,30,Travel and Entertainment,Expense,297574.19,0,297574.19,0,297574.19,0,,Total Equity and Liabilities,"9,734,486.62",Total Equity and Liabilities,"1,163,779.73",,Training and Development,"1,375,976.79",Training and Development,"1,376,969.71",-992.92
+Fixed Asset,Vehicles," 4,103,711.67 ",0,cash,31,Uniforms and Protective Gear,Expense,135579.19,0,135579.19,0,135579.19,0,,,,,,,Travel and Entertainment,"297,574.19",Travel and Entertainment,"297,574.19",0.00
+Long-Term Liability,Notes Payable," 179,457.26 ",0,cash,32,Utilities Expense,Expense,126419.88,0,126419.88,0,126419.88,0,,"9,888,395.75",,,,,Uniforms and Protective Gear,"135,579.19",Uniforms and Protective Gear,"136,503.30",-924.11
+Other Income,Other Revenue, -   ,22000,cash,33,Vehicles,Fixed Asset,4103711.67,0,4103711.67,0,4103711.67,0,,"9,862,069.95",,,,,Utilities Expense,"126,419.88",Utilities Expense,"127,043.21",-623.33
+Revenue,Sales Revenue, -   ,34834647.97,cash,34,Wages Expense,Expense,10476583.02,0,10476583.02,0,10476583.02,0,,"26,325.80",,,,,Wages Expense,"10,476,583.02",Wages Expense,"10,488,719.95","-12,136.93"
+Revenue,Service Revenue, -   ,36745393.46,cash,35,Waste Removal,Expense,15257.2,0,15257.2,0,15257.2,0,,,,,,,Waste Removal,"15,257.20",Waste Removal,"15,257.20",0.00
+,," 73,877,813.85 "," 73,877,813.85 ",balance,36,cash,Current Asset,369951.84,0,369951.84,0,369951.84,0,,,,,,,Total Expense,"61,489,335.48",Total Expense,"61,562,054.95","-72,719.47"
+,,,,balance,,,," 73,758,307.85 "," 73,758,307.85 "," 73,877,813.85 "," 73,877,813.85 ",,,,,,,,,,,,,0.00
+,,,,,,,,,,,,,,,,,,,,Total Operating Income,"9,842,085.95",Total Operating Income,"9,868,523.75","-26,437.80"
+Cash Balance,Cash Start," 491,091.31 ",149395.32," 341,695.99 ",,,," (119,506.00)",,,,,,,,,,,,,,,,0.00
+Cash Balance,Cash End," 72,004,236.70 ",71333819.7," 670,417.00 ",,,,,,,,,,,,,,,,Other Revenue,,Other Revenue,,0.00
+,,,,,,,,,,Net Income,"9,862,069.95",,,,,,,,,Other Revenue,"22,000.00",Other Revenue,"22,000.00",0.00
+,,,,,,,,,,,,,,,,,,,,Total Other Revenues,"22,000.00",Total Other Revenues,"22,000.00",0.00
+,,,71580041.43,Revenue,,,,,,,,,,,,,,,,,,,,0.00
+,,,248620,Cogs,,,,,,,,,,,,,,,,Other Expense,,Other Expense,,0.00
+,incomes," 71,602,041.43 ",61489335.48,expense,,,,,,,,,,,,,,,,Accretion Expense,"2,016.00",Accretion Expense,"2,128.00",-112.00
+,outcomes," 71,232,089.59 ",22000,Other income,,,,,,,,,,,,,,,,Total Other Expense,"2,016.00",Total Other Expense,"2,128.00",-112.00
+,Increase," 369,951.84 ",2016,other expense,,,,,,,,,,,,,,,,,,,,0.00
+,,,9862069.95,,,,,,,,,,,,,,,,,,,,,0.00
+,,,,,,,,,,,,,,,,,,,,Net Profit,"9,862,069.95",Net Profit,"9,888,395.75","-26,325.80"
+," 341,695.99 ",,,,,,,,,,,,,,,,,,,,,,,
+," 670,417.00 ",,,,,,,,,,,,,,,,,,,,,,,
+,," 328,721.01 ",,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+,," 41,230.83 ",,,,,,,,,,,,,,,,,,,,,,

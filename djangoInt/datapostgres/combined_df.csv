@@ -1,0 +1,44 @@
+,category_account,account,source_account,source_category,debit,credit,indicator,cash_flow_direct,cash_flow_indirect
+0,COGS,Purchases of Items,Accounts Payable,Current Liability,225928.0,0.0,none_cash,,net_income
+1,COGS,Raw Materials COGS,Accounts Payable,Current Liability,22692.0,0.0,none_cash,,net_income
+2,Current Liability,Accounts Payable,Purchases of Items,COGS,0.0,225928.0,none_cash,,Operating Activities
+3,Current Liability,Accounts Payable,Raw Materials COGS,COGS,0.0,22692.0,none_cash,,Operating Activities
+4,Expense,Depreciation Expense,Accumulated Depreciation,Fixed Asset,2025136.42,0.0,none_cash,,net_income
+5,Fixed Asset,Accumulated Depreciation,Depreciation Expense,Expense,0.0,2025136.42,none_cash,,Operating Activities
+6,Fixed Asset,Property Plant and Equipment,"Accretion Expense
+",Other Expense,0.0,2016.0,none_cash,,Operating Activities
+7,Other Expense,"Accretion Expense
+",Property Plant and Equipment,Fixed Asset,2016.0,0.0,none_cash,,net_income
+8,Current Liability,Accounts Payable,cash,Current Asset,117490.0,0.0,cash,Financing Activities,Financing Activities
+9,Equity,Dividends Paid,cash,Current Asset,1201804.97,0.0,cash,Financing Activities,Financing Activities
+10,Expense,Advertising,cash,Current Asset,1521243.07,0.0,cash,Operating Activities,net_income
+11,Expense,Business Comunication,cash,Current Asset,106474.44,0.0,cash,Operating Activities,net_income
+12,Expense,Dues and Subscriptions,cash,Current Asset,537165.76,0.0,cash,Operating Activities,net_income
+13,Expense,Freight Expense and Shipping,cash,Current Asset,265029.82,0.0,cash,Operating Activities,net_income
+14,Expense,Fuel Expenses,cash,Current Asset,282605.09,0.0,cash,Operating Activities,net_income
+15,Expense,Insurance Expenses,cash,Current Asset,758870.99,0.0,cash,Operating Activities,net_income
+16,Expense,Interest Expense,cash,Current Asset,72494.64,0.0,cash,Operating Activities,net_income
+17,Expense,Janitorial Expense,cash,Current Asset,108000.0,0.0,cash,Operating Activities,net_income
+18,Expense,Maintenance Expenses,cash,Current Asset,3447095.27,0.0,cash,Operating Activities,net_income
+19,Expense,Material Expenses,cash,Current Asset,11098081.82,0.0,cash,Operating Activities,net_income
+20,Expense,Office Supplies,cash,Current Asset,94546.41,0.0,cash,Operating Activities,net_income
+21,Expense,Professional Fees,cash,Current Asset,465667.35,0.0,cash,Operating Activities,net_income
+22,Expense,Rent Expense,cash,Current Asset,52486.24,0.0,cash,Operating Activities,net_income
+23,Expense,Security Service,cash,Current Asset,38978.85,0.0,cash,Operating Activities,net_income
+24,Expense,Software,cash,Current Asset,5281.37,0.0,cash,Operating Activities,net_income
+25,Expense,Subcontractor Expenses,cash,Current Asset,28182787.67,0.0,cash,Operating Activities,net_income
+26,Expense,Training and Development,cash,Current Asset,1375976.79,0.0,cash,Operating Activities,net_income
+27,Expense,Travel and Entertainment,cash,Current Asset,297574.19,0.0,cash,Operating Activities,net_income
+28,Expense,Uniforms and Protective Gear,cash,Current Asset,135579.19,0.0,cash,Operating Activities,net_income
+29,Expense,Utilities Expense,cash,Current Asset,126419.88,0.0,cash,Operating Activities,net_income
+30,Expense,Wages Expense,cash,Current Asset,10476583.02,0.0,cash,Operating Activities,net_income
+31,Expense,Waste Removal,cash,Current Asset,15257.2,0.0,cash,Operating Activities,net_income
+32,Fixed Asset,Buildings,cash,Current Asset,5112662.390000001,0.0,cash,Investing Activities,Investing Activities
+33,Fixed Asset,Property Plant and Equipment,cash,Current Asset,1052764.24,0.0,cash,Investing Activities,Investing Activities
+34,Fixed Asset,Vehicles,cash,Current Asset,4103711.67,0.0,cash,Investing Activities,Investing Activities
+35,Long-Term Liability,Notes Payable,cash,Current Asset,179457.26,0.0,cash,Financing Activities,Financing Activities
+36,Other Income,Other Revenue,cash,Current Asset,0.0,22000.0,cash,Operating Activities,net_income
+37,Revenue,Sales Revenue,cash,Current Asset,0.0,34834647.97,cash,Operating Activities,net_income
+38,Revenue,Service Revenue,cash,Current Asset,0.0,36745393.46,cash,Operating Activities,net_income
+39,Cash Balance,Cash Start,balance,balance,402195.27,101730.11,balance,start_balance,start_balance
+40,Cash Balance,Cash End,cash,balance,72004236.7,71333819.7,balance,end_balance,end_balance
