@@ -33,8 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'web-production-264b6.up.railway.app', 'www.ledgerdoc.com']
 
-CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://web-production-264b6.up.railway.app/']
+
+CSRF_TRUSTED_ORIGINS = ['https://*web-production-264b6.up.railway.app/', 'https://*.127.0.0.1']
 
 
 # Application definition
