@@ -50,16 +50,23 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # Security First
     'django.middleware.security.SecurityMiddleware',
+    # Session Management
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # Common and CSRF
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # Authentication and Authorization
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # Message Framework (for flash messages)
     'django.contrib.messages.middleware.MessageMiddleware',
+    # Security Concerns
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Serving Static Files with WhiteNoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
 ]
+
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 ROOT_URLCONF = 'djangoInt.urls'
