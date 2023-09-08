@@ -1,5 +1,4 @@
 from djangoInt.datapostgres.postgres_connection import create_connection
-import datapane as dp
 import pandas as pd
 from sqlalchemy import create_engine, text
 
