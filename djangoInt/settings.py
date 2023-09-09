@@ -31,10 +31,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'web-production-264b6.up.railway.app', 'www.ledgerdoc.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'web-production-264b6.up.railway.app', 'www.ledgerdock.com']
 
 
-CSRF_TRUSTED_ORIGINS = ['https://*web-production-264b6.up.railway.app/', 'https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*web-production-264b6.up.railway.app/', 'https://*.127.0.0.1', 'https://*.ledgerdock.com']
 
 
 # Application definition
