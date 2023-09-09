@@ -24,7 +24,7 @@ def about_us(request):
 
 
 def pricing(request):
-    return render(request, '../../leger/templates/pricing.html')
+    return render(request, 'pricing.html')
 
 
 def seorganizer(request):

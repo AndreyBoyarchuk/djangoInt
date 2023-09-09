@@ -1,0 +1,67 @@
+:root {
+     --primary-color: #0A4158;
+  --secondary-nav-color: #6AAD50;
+  --success-color: #eee2db;
+  --danger-color: #FF9636;
+  --warning-color: #D37506;
+  --info-color: #ADA7A7;
+  --light-color: #fff5e4;
+  --nav-background-color: #fff8e9 ;
+  --nav-button-color: #CBD5E1FF;
+  --monarch-color: #8B0723;
+
+
+}
+
+
+.inside_plain {
+
+  border: 1px solid var(--monarch-color);
+  width: 100%;
+}
+
+
+.inside {
+height: 90%;
+  border: 1px solid var(--monarch-color);
+  padding: 20px;
+  background-color: var(--nav-background-color);
+  margin-right: -10px; /*set the corner on the right side*/
+    position: relative;  /* Add this line */
+  top: -10px;  /* Adjust this value to move the div upwards */
+    color: var(--primary-color);
+}
+
+.inside_back {
+
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 0;  /* Changed from -25px to 0 */
+  padding-left: 10px; /* Offsets left side */
+  padding-right: 0;  /* Changed from -15px to 0 */
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--nav-button-color) 0px,
+    var(--nav-button-color) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+
+.m-10px {
+    margin: 30px;
+}
+
+.hero-h1 {
+    font-size: 2.5rem;        /* Corresponds to display-4 font size */
+    font-weight: 3000;         /* Corresponds to display-4 font weight */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* A generic shadow as an example */
+    padding: 1rem;            /* Corresponds to p-3 */
+    margin-bottom: 1rem;      /* Corresponds to mb-3 */
+    background-color: var(--nav-button-color); /* Example body background color. Adjust if different. */
+    border-radius: 0.45rem;   /* Corresponds to rounded */
+    border: 2px solid #f8f9fa; /* Example border */
+   color: var(--primary-color);
+}

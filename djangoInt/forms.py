@@ -29,3 +29,6 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+class DateForm(forms.Form):
+    start_date = forms.DateField(label="Start Date", required=True)
+    end_date = forms.DateField(label="End Date", required=True)
