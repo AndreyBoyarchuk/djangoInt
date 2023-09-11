@@ -1,4 +1,6 @@
 from django.shortcuts import redirect
+from datetime import datetime
+
 from django.contrib import messages
 from blog.models import Post
 from django.contrib.auth import login
@@ -68,12 +70,20 @@ import json
 
 
 def dataserv(request):
-    default_start_date = '2023-07-01'
-    default_end_date = '2023-07-05'
+    # Get today's date
+    today = datetime.today().date()
+    # Set the start of the year
+    start_of_year = datetime(today.year, 1, 1).date()
+    default_start_date = str(start_of_year)
+    default_end_date = str(today)
 
     if request.method == 'POST':
         start_date = request.POST['start_date']
         end_date = request.POST['end_date']
+    elif request.method == 'GET':
+        start_date = request.session.get('start_date', default_start_date)
+        end_date = request.session.get('end_date', default_end_date)
+
     else:
         start_date = default_start_date
         end_date = default_end_date
@@ -166,14 +176,26 @@ from django.http import JsonResponse
 
 
 def profit_and_loss(request):
+    # Get today's date
+    today = datetime.today().date()
+    # Set the start of the year
+    start_of_year = datetime(today.year, 1, 1).date()
+    default_start_date = str(start_of_year)
+    default_end_date = str(today)
 
-    start_date = request.session.get('start_date')
-    end_date = request.session.get('end_date')
+    if request.method == 'POST':
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+    elif request.method == 'GET':
+        start_date = request.session.get('start_date', default_start_date)
+        end_date = request.session.get('end_date', default_end_date)
 
-    # Check if the dates are available
-    if start_date is None or end_date is None:
-        # Redirect to the dataserv view or show an error
-        return redirect('dataserv')  # or handle it differently
+    else:
+        start_date = default_start_date
+        end_date = default_end_date
+    request.session['start_date'] = start_date
+    request.session['end_date'] = end_date
+
 
     t_name = fetch_table_name_for_user(request.user)
     df = fetch_data(start_date, end_date, t_name)
@@ -186,6 +208,8 @@ def profit_and_loss(request):
         'company_name': 'My Company',
         'period': f'{start_date} to {end_date}',
         'statement': statement,
+        'start_date': start_date,
+        'end_date': end_date,
     }
     with open('data.json', 'w') as file:
         json.dump(data, file, indent=4)
@@ -193,10 +217,20 @@ def profit_and_loss(request):
 
 
 def balance_sheet(request):
-    end_date = request.session.get('end_date')  # You can replace this with the desired end date
-    if end_date is None:
-        # Redirect to the dataserv view or show an error
-        return redirect('dataserv')
+    # Get today's date
+    today = datetime.today().date()
+    # Set the start of the year
+    default_end_date = str(today)
+
+    if request.method == 'POST':
+
+        end_date = request.POST['end_date']
+    elif request.method == 'GET':
+        end_date = request.session.get('end_date', default_end_date)
+    else:
+        end_date = default_end_date
+    request.session['end_date'] = end_date
+
 
     table_name = fetch_table_name_for_user(request.user)  # Replace with the appropriate table name
     # Process the data to create the balance sheet
@@ -240,13 +274,26 @@ def balance_sheet(request):
     return render(request, 'balance_sheet.html', context)
 
 def cash_flow(request):
-    start_date = request.session.get('start_date')
-    end_date = request.session.get('end_date')
+    # Get today's date
+    today = datetime.today().date()
+    # Set the start of the year
+    start_of_year = datetime(today.year, 1, 1).date()
+    default_start_date = str(start_of_year)
+    default_end_date = str(today)
 
-    # Check if the dates are available
-    if start_date is None or end_date is None:
-        # Redirect to the dataserv view or show an error
-        return redirect('dataserv')  # or handle it differently
+    if request.method == 'POST':
+        start_date = request.POST['start_date']
+        end_date = request.POST['end_date']
+    elif request.method == 'GET':
+        start_date = request.session.get('start_date')
+        end_date = request.session.get('end_date')
+
+    else:
+        start_date = default_start_date
+        end_date = default_end_date
+    request.session['start_date'] = start_date
+    request.session['end_date'] = end_date
+
     t_name = fetch_table_name_for_user(request.user)
     df = fetch_data(start_date, end_date, t_name)
     df1 = fetch_bl_data(start_date, t_name)
@@ -263,8 +310,9 @@ def cash_flow(request):
 
     context = {
         'cash_flow': df_cash_flow.to_html(),
-        'combined_df': pl_transactions.to_html()
-
+        'combined_df': pl_transactions.to_html(),
+        'start_date': start_date,
+        'end_date': end_date,
     }
 
     return render(request, 'cash_flow.html', context)

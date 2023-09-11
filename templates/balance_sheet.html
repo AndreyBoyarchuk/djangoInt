@@ -1,19 +1,65 @@
+{% extends 'base2.html' %}
 {% load static %}
 {% load custom_filters %}
 {% load humanize %}
-{% include 'logsnipet.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance Sheet</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
-</head>
+    {% block title %}
+    Balance Sheet
+{% endblock %}
+
+
+
+{% block content %}
+   <script>
+        // Set the path as a global JavaScript variable
+        const STYLES_PATH = "{% static 'js_reports/styles.css' %}";
+    </script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'js_reports/styles.css' %}">
+
+
+
 <body>
-<div>
+
+ {% include 'logsnipet.html' %}
 <div class="container">
-<div id="container_to_print">
+    <!-- Moved the print button here -->
+    <button class="login-head" onclick="printContainer()">Print</button>
+    <!-- Rest of your content ... -->
+</div>
+
+<script>
+    function printContainer() {
+        const contentToPrint = document.getElementById('container_to_print').outerHTML;
+        const styles = `<link rel="stylesheet" type="text/css" href="${STYLES_PATH}">`; // Using the JavaScript variable for styles
+
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write('<html><head>' + styles + '</head><body>' + contentToPrint + '</body></html>');
+        newWindow.document.close();
+        newWindow.focus();
+        newWindow.print();
+
+    }
+</script>
+
+<div>
+   <form method="post">
+    {% csrf_token %}
+
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+
+    <input type="submit" value="Get Data">
+        <br>
+        <span>Chosen Dates: {{ end_date }} Select Dates you want to display</span>
+</form>
+
+<div id="container_to_print"><div class="container">
     <h1 class="text-center mb-4">{{ company_name }}</h1>
     <h2 class="text-center mb-4">Balance Sheet</h2>
     <h3 class="text-center mb-4">As of  {{ end_date }}</h3>
@@ -185,4 +231,5 @@
 </script>
 <button onclick="printContainer()">Print</button>
 
-</html>
+
+{% endblock %}

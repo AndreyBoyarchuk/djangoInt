@@ -90,16 +90,28 @@ th, td {
   -webkit-print-color-adjust: exact;
 
 }
-
 @media print {
-     #printButton {
+    /* Styles to be applied when printing */
+    body {
+        color: black;
+        background-color: gray;
+    }
+    .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 30px;
+    }
+    /* Hide elements that aren't needed in the print version */
+    .navbar, .footer {
         display: none;
     }
 
-  html, body {
-    margin: 10px;
-    padding: 10px;
-  }
+     * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
 
+    /* Any other print-specific styles */
 
 }
+
