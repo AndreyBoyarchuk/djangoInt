@@ -12,7 +12,15 @@ body {
     max-width: 800px;
     margin: auto;
     padding: 30px;
+
 }
+.container_to_print{
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    line-height: 0.3;
+}
+
 
 .text-center {
     text-align: center;
@@ -100,6 +108,7 @@ th, td {
         max-width: 700px;
         margin: auto;
         padding: 30px;
+        line-height: 0.2;
     }
     /* Hide elements that aren't needed in the print version */
     .navbar, .footer {

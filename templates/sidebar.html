@@ -1,18 +1,66 @@
 
+
+
 {% load static %}
-<nav class="nav-wrapper vert_nav">
-  <ul class="nav flex-column">
+
+<style>
+
+/* styles.css */
+.sidebar {
+    background-color: #f1f1f1;
+    padding: 15px;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar ul {
+        display: none;
+    }
+    .sidebar.active ul {
+        display: block;
+    }
+}
+
+</style>
+<!-- sidebar.html -->
+<div id="sidebar" class="sidebar">
+    <button class="btn btn-link d-block d-md-none" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+<ul class="nav flex-column">
     <li class="nav-item {% if request.path == '/dataserv/' %}active{% endif %}">
-      <a class="nav-link v_nav" href='/dataserv/'><i class="fas fa-chart-line"></i> Data Analytics</a>
+        <a class="nav-link v_nav" href='/dataserv/'><i class="fas fa-chart-line"></i> Data Analytics</a>
     </li>
     <li class="nav-item {% if request.path == '/profitAndLossData/' %}active{% endif %}">
-      <a class="nav-link v_nav" href='/profitAndLossData/'><i class="fas fa-building" ></i> Profit and Loss</a>
+        <a class="nav-link v_nav" href='/profitAndLossData/'><i class="fas fa-building"></i> Profit and Loss</a>
     </li>
     <li class="nav-item {% if request.path == '/balanceSheetData/' %}active{% endif %}">
-      <a class="nav-link v_nav" href='/balanceSheetData/'><i class="fas fa-briefcase"></i> Balance Sheet</a>
+        <a class="nav-link v_nav" href='/balanceSheetData/'><i class="fas fa-briefcase"></i> Balance Sheet</a>
     </li>
     <li class="nav-item {% if request.path == '/cashFlowData/' %}active{% endif %}">
-      <a class="nav-link v_nav" href='/cashFlowData/'><i class="fas fa-calculator"></i> Cash Flow </a>
+        <a class="nav-link v_nav" href='/cashFlowData/'><i class="fas fa-calculator"></i> Cash Flow</a>
     </li>
-  </ul>
-</nav>
+</ul>
+</div>
+
+<script>
+// scripts.js
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("sidebar");
+
+    sidebarToggle.addEventListener("click", function() {
+        sidebar.classList.toggle("active");
+    });
+});
+
+
+</script>

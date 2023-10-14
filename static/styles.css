@@ -141,8 +141,8 @@ body {
 
 
 .footer {
-
-  padding: 20px;
+  background-color: var(--nav-background-color);
+  padding: 30px;
 }
 
 
